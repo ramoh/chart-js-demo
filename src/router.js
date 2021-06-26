@@ -17,6 +17,11 @@ export default new Router({
             component: Home
         },
         {
+            path: "/charts",
+            name: "VueCharts",
+            component: VueCharts
+        },
+        {
             path: "/chartjs",
             name: "VueChartJS",
             component: VueChartJS
@@ -25,11 +30,6 @@ export default new Router({
             path: "/chartkick",
             name: "VueChartKick",
             component: VueChartKick
-        },
-        {
-            path: "/charts",
-            name: "VueCharts",
-            component: VueCharts
         }
     ]
 });
