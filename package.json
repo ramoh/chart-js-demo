@@ -14,7 +14,8 @@
     "hchs-vue-charts": "^1.2.8",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",
-    "vue-chartkick": "^1.1.0"
+    "vue-chartkick": "^1.1.0",
+    "vue-router": "^3.5.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
