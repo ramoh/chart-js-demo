@@ -18,6 +18,8 @@
       </div>
       <div class="column">
         <h3>Reactivity - Live update upon change in datasets</h3>
+        <reactive :chart-data="dataCollection"></reactive>
+        <button class="button is-primary" @click="fillData()">Randomize</button>
       </div>
     </div>
   </section>
@@ -26,8 +28,65 @@
 import LineChart from "../components/LineChart.vue";
 import BarChart from "../components/BarChart.vue";
 import BubbleChart from "../components/BubbleChart.vue";
+import Reactive from "../components/Reactive.vue";
 export default {
-  components: { LineChart, BarChart, BubbleChart },
+  components: { LineChart, BarChart, BubbleChart, Reactive },
   name: "vue-charts-js",
+  data() {
+    return {
+      // instantiating dataCollection with null
+      dataCollection: null,
+    };
+  },
+  created() {
+    // anytime the vue instance if created, call the fillData() function
+    this.fillData();
+  },
+  methods: {
+    fillData() {
+      this.dataCollection = {
+        // Data for the y-axis of the chart
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ],
+        datasets: [
+          {
+            label: "Data One",
+            backgroundColor: "#f87979",
+            // Data for the x-axis of the chart
+            data: [
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+            ],
+          },
+        ],
+      };
+    },
+    getRandomInt() {
+      // JS function to generate numbers to be used for the chart
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
+    },
+  },
 };
 </script>
