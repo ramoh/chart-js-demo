@@ -8,7 +8,7 @@ export default {
       dataCollection: {
         // Data to be represented on x-axis
         labels: [
-          "Januaryyy",
+          "January",
           "February",
           "March",
           "April",
