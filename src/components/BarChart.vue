@@ -1,7 +1,7 @@
 <script>
 import { Bar } from "vue-chartjs";
 export default {
-  name: "bar",
+  name: "bar-chart",
   extends: Bar,
   data() {
     return {
