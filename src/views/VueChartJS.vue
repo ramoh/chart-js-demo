@@ -29,8 +29,9 @@ import LineChart from "../components/LineChart.vue";
 import BarChart from "../components/BarChart.vue";
 import BubbleChart from "../components/BubbleChart.vue";
 import Reactive from "../components/Reactive.vue";
-const xLables = Array.from(Array(60), (x, index) => index + 1);
+//const xLables = Array.from(Array(60), (x, index) => index + 1);
 const yLabels = [];
+const xLabels1 = [];
 
 const randomNumberGenerator = (max, min) => {
   return Math.random() * (max - min) + min;
@@ -53,17 +54,20 @@ export default {
     // per 500 milliseconds
     const updatePrice = setInterval(() => {
       yLabels.push(randomNumberGenerator(75, 85));
+
+      let time = new Date();
+      xLabels1.push(time.toLocaleTimeString());
       this.fillData();
       if (yLabels.length === 45) {
         clearInterval(updatePrice);
       }
-    }, 5000);
+    }, 1000);
   },
   methods: {
     fillData() {
       this.dataCollection = {
         // Data for the y-axis of the chart
-        labels: xLables,
+        labels: xLabels1,
         datasets: [
           {
             fill: false,
