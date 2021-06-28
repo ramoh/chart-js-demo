@@ -29,6 +29,12 @@ import LineChart from "../components/LineChart.vue";
 import BarChart from "../components/BarChart.vue";
 import BubbleChart from "../components/BubbleChart.vue";
 import Reactive from "../components/Reactive.vue";
+const xLables = Array.from(Array(60), (x, index) => index + 1);
+const yLabels = [];
+
+const randomNumberGenerator = (max, min) => {
+  return Math.random() * (max - min) + min;
+};
 export default {
   components: { LineChart, BarChart, BubbleChart, Reactive },
   name: "vue-charts-js",
@@ -42,46 +48,36 @@ export default {
     // anytime the vue instance if created, call the fillData() function
     this.fillData();
   },
+  mounted() {
+    // add a element to y lables at regular interval.
+    // per 500 milliseconds
+    const updatePrice = setInterval(() => {
+      yLabels.push(randomNumberGenerator(75, 85));
+      this.fillData();
+      if (yLabels.length === 45) {
+        clearInterval(updatePrice);
+      }
+    }, 5000);
+  },
   methods: {
     fillData() {
       this.dataCollection = {
         // Data for the y-axis of the chart
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ],
+        labels: xLables,
         datasets: [
           {
-            label: "Data One",
-            backgroundColor: "#f87979",
+            fill: false,
+            label: "Stock price",
+            backgroundColor: "rgba(0,128,0,1.0)",
+            borderColor: "rgba(0,128,0,0.4)",
+            borderWidth: 1,
+            //  backgroundColor: "#f87979",
             // Data for the x-axis of the chart
-            data: [
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-            ],
+            data: yLabels,
           },
         ],
       };
+      //
     },
     getRandomInt() {
       // JS function to generate numbers to be used for the chart

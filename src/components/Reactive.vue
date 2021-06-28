@@ -13,6 +13,8 @@ export default {
             {
               ticks: {
                 beginAtZero: true,
+                min: 60,
+                max: 90,
               },
               gridLines: {
                 display: true,
