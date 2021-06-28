@@ -53,14 +53,14 @@ export default {
     // add a element to y lables at regular interval.
     // per 500 milliseconds
     const updatePrice = setInterval(() => {
+      if (yLabels.length >= 45) {
+        clearInterval(updatePrice);
+      }
       yLabels.push(randomNumberGenerator(75, 85));
 
       let time = new Date();
       xLabels1.push(time.toLocaleTimeString());
       this.fillData();
-      if (yLabels.length === 45) {
-        clearInterval(updatePrice);
-      }
     }, 1000);
   },
   methods: {
