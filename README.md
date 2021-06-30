@@ -1,5 +1,5 @@
 # chart-js-demo
-
+Test Comment
 ## Project setup
 ```
 npm install
